@@ -1,0 +1,25 @@
+.dd-wrapper {
+  position: absolute;
+  color: #ffffff;
+  top: 30px;
+  left: 15px;
+  .dd-header {
+    display: flex;
+    align-items: center;
+    .dd-header-title {
+      margin-right: 5px;
+    }
+  }
+
+  .dd-list {
+    margin: 0;
+
+    .dd-list-item {
+      list-style: none;
+      background: #e8c300;
+      height: 30px;
+      border-radius: 5px;
+      padding-top: 4px;
+    }
+  }
+}
