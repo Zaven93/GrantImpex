@@ -1,10 +1,13 @@
-import React, { useState } from "react"
-import onClickOutside from "react-onclickoutside"
+import React, { useState, useRef, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons"
 import "./styles.scss"
 
 const Dropdown = () => {
+  const path =
+    typeof window !== "undefined"
+      ? window.location.pathname.slice(1).toUpperCase()
+      : "RU"
   const [languages, setLanguages] = useState([
     {
       id: 0,
@@ -20,18 +23,16 @@ const Dropdown = () => {
     },
   ])
   const [listOpen, setListOpen] = useState(false)
-  const [headerTitle, setHeaderTitle] = useState(
-    window.location.pathname.slice(1).toUpperCase()
-  )
+  const [headerTitle, setHeaderTitle] = useState(path)
+
+  const ref = useRef()
+
+  useOnClickOutside(ref, () => setListOpen(false))
 
   const toggle = () => setListOpen(!listOpen)
 
-  Dropdown.handleClickOutside = () => setListOpen(false)
-
-  console.log("Path data", window.location.pathname.slice(1))
-
   return (
-    <div className="dd-wrapper">
+    <div ref={ref} className="dd-wrapper">
       <div className="dd-header" onClick={() => toggle()}>
         <div className="dd-header-title">{headerTitle}</div>
         {listOpen ? (
@@ -61,8 +62,24 @@ const Dropdown = () => {
   )
 }
 
-const clickOutsideConfig = {
-  handleClickOutside: () => Dropdown.handleClickOutside,
+function useOnClickOutside(ref, handler) {
+  useEffect(() => {
+    const listener = event => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return
+      }
+
+      handler(event)
+    }
+
+    document.addEventListener("mousedown", listener)
+    document.addEventListener("touchstart", listener)
+
+    return () => {
+      document.removeEventListener("mousedown", listener)
+      document.removeEventListener("touchstart", listener)
+    }
+  }, [ref, handler])
 }
 
-export default onClickOutside(Dropdown, clickOutsideConfig)
+export default Dropdown
