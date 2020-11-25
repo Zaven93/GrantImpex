@@ -23,14 +23,20 @@ const Index = () => {
       : (html.style.overflow = "visible")
   }, [active])
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY >= 60) {
-      setScrolled(true)
-    } else {
-      setScrolled(false)
+  const scrollWindow = () => {
+    if (typeof window == "undefined") {
+      return
     }
-  })
+    window.addEventListener("scroll", () => {
+      if (window.scrollY >= 60) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    })
+  }
 
+  scrollWindow()
   return (
     <div>
       <Navbar scrolled={scrolled} active={active} setActive={setActive} />
