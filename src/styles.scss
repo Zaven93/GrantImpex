@@ -28,16 +28,26 @@
       letter-spacing: 0.9px;
       margin-bottom: 37px;
       text-align: center;
-    }
+      position: relative;
 
-    span {
-      color: #e8c300;
+      &::after {
+        content: "";
+        position: absolute;
+        display: inline;
+        width: 250px;
+        height: 2px;
+        background: #e8c300;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 100%;
+      }
     }
   }
 
   .buttons-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     button {
       width: 130px;
       height: 40px;
@@ -47,6 +57,7 @@
 
       &:first-of-type {
         background: #e8c300;
+        margin-right: 30px;
       }
 
       &:last-of-type {
