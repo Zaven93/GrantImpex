@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons"
 import "./styles.scss"
 
-const Dropdown = () => {
+const Dropdown = ({ active }) => {
   const path =
     typeof window !== "undefined"
-      ? window.location.pathname.slice(1).toUpperCase()
+      ? window.location.pathname.slice(1, 3).toUpperCase()
       : "RU"
   const [languages, setLanguages] = useState([
     {
@@ -32,7 +32,7 @@ const Dropdown = () => {
   const toggle = () => setListOpen(!listOpen)
 
   return (
-    <div ref={ref} className="dd-wrapper">
+    <div ref={ref} className={`dd-wrapper ${active ? "visible" : "hidden"}`}>
       <div className="dd-header" onClick={() => toggle()}>
         <div className="dd-header-title">{headerTitle}</div>
         {listOpen ? (

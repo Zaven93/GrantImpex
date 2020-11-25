@@ -4,6 +4,11 @@ import Navbar from "../components/Navbar"
 import LangNav from "../components/LangNav"
 import "../styles.scss"
 
+// $(".toggle-menu").click(function () {
+//   $(this).toggleClass("active")
+//   $("#menu").toggleClass("open")
+// })
+
 const Index = () => {
   const [active, setActive] = useState(false)
   const [clicked, setClicked] = useState(false)
@@ -13,6 +18,34 @@ const Index = () => {
     <>
       <Navbar active={active} setActive={setActive} />
       <div className="main-content">
+        <section id="home">
+          <div className="home-header">
+            <h1>
+              <span>Impex</span>
+            </h1>
+            <button>Click me</button>
+            <LangNav />
+            <p>Textile production export and import</p>
+          </div>
+        </section>
+        <section id="home">
+          <div className="home-header">
+            <h1>
+              {intl.formatMessage({ id: "greeting" })}
+              <span>Impex</span>
+            </h1>
+            <p>Textile production export and import</p>
+          </div>
+        </section>
+        <section id="home">
+          <div className="home-header">
+            <h1>
+              {intl.formatMessage({ id: "greeting" })}
+              <span>Impex</span>
+            </h1>
+            <p>Textile production export and import</p>
+          </div>
+        </section>
         <section id="home">
           <div className="home-header">
             <h1>
