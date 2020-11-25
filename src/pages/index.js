@@ -11,9 +11,13 @@ const Index = () => {
 
   const intl = useIntl()
 
-  const html = document.querySelector("html")
+  const html =
+    typeof document !== "undefined" ? document.querySelector("html") : null
 
   useEffect(() => {
+    if (!html) {
+      return
+    }
     active
       ? (html.style.overflow = "hidden")
       : (html.style.overflow = "visible")
