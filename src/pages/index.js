@@ -1,66 +1,53 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import Navbar from "../components/Navbar"
 import LangNav from "../components/LangNav"
 import "../styles.scss"
 
-// $(".toggle-menu").click(function () {
-//   $(this).toggleClass("active")
-//   $("#menu").toggleClass("open")
-// })
-
 const Index = () => {
   const [active, setActive] = useState(false)
   const [clicked, setClicked] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   const intl = useIntl()
+
+  const html = document.querySelector("html")
+
+  useEffect(() => {
+    active
+      ? (html.style.overflow = "hidden")
+      : (html.style.overflow = "visible")
+  }, [active])
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 60) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
+    }
+  })
+
   return (
-    <>
-      <Navbar active={active} setActive={setActive} />
+    <div>
+      <Navbar scrolled={scrolled} active={active} setActive={setActive} />
       <div className="main-content">
         <section id="home">
-          <div className="home-header">
+          <div className="header">
             <h1>
-              <span>Impex</span>
+              Grant<span>Impex</span>
             </h1>
-            <button>Click me</button>
-            <LangNav />
-            <p>Textile production export and import</p>
+            <div className="buttons-container">
+              <button>Explore</button>
+              <button>Contact Us</button>
+            </div>
           </div>
         </section>
-        <section id="home">
-          <div className="home-header">
-            <h1>
-              {intl.formatMessage({ id: "greeting" })}
-              <span>Impex</span>
-            </h1>
-            <p>Textile production export and import</p>
-          </div>
-        </section>
-        <section id="home">
-          <div className="home-header">
-            <h1>
-              {intl.formatMessage({ id: "greeting" })}
-              <span>Impex</span>
-            </h1>
-            <p>Textile production export and import</p>
-          </div>
-        </section>
-        <section id="home">
-          <div className="home-header">
-            <h1>
-              {intl.formatMessage({ id: "greeting" })}
-              <span>Impex</span>
-            </h1>
-            <p>Textile production export and import</p>
-          </div>
-        </section>
-        <section id="about">About us</section>
+        <section id="about"></section>
         <section id="features"></section>
         <section id="services"></section>
         <section id="contact"></section>
       </div>
-    </>
+    </div>
   )
 }
 

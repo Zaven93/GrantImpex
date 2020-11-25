@@ -4,11 +4,11 @@ import "./styles.scss"
 import LangNav from "../LangNav"
 import grantImpex from "../../images/grantImpex.png"
 
-const Navbar = ({ active, setActive }) => {
+const Navbar = ({ active, setActive, scrolled }) => {
   const intl = useIntl()
   return (
     <>
-      <header id="header">
+      <header id="header" className={scrolled ? "scrolled" : ""}>
         <LangNav active={active} />
         <img
           className={active && "hidden"}

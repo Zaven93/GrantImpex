@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700);
+
 * {
   margin: 0;
   font-family: sans-serif;
@@ -13,14 +15,50 @@
   background-position: center;
   min-height: 400px;
   padding-top: 115px;
+
+  .header {
+    h1 {
+      font-weight: bold;
+      color: #ffffff;
+      font-size: 35px;
+      text-transform: uppercase;
+      text-align: left;
+      line-height: 1.2;
+      margin-top: 0;
+      letter-spacing: 0.9px;
+      margin-bottom: 37px;
+      text-align: center;
+    }
+
+    span {
+      color: #e8c300;
+    }
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-around;
+    button {
+      width: 130px;
+      height: 40px;
+      color: #ffffff;
+      border-radius: 5px;
+      border: none;
+
+      &:first-of-type {
+        background: #e8c300;
+      }
+
+      &:last-of-type {
+        background: transparent;
+        border: 1px solid #ffffff;
+      }
+    }
+  }
 }
 
 .logo {
   position: absolute;
   top: 10px;
   left: 10px;
-}
-
-.clicked {
-  background: red;
 }
