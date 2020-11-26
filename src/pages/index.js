@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { useIntl } from "gatsby-plugin-intl"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faThumbsUp,
+  faCogs,
+  faClock,
+  faHandshake,
+  faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons"
 import Navbar from "../components/Navbar"
 import LangNav from "../components/LangNav"
 import textileProduction from "../images/textile_production.jpg"
@@ -81,8 +89,76 @@ const Index = () => {
           </p>
           <span className="about-image"></span>
         </section>
-        <section id="features"></section>
-        <section id="services"></section>
+        <section id="features">
+          <div className="features-container">
+            <h1>OUR FEATURES</h1>
+            <div className="features-item">
+              <FontAwesomeIcon icon={faThumbsUp} />
+              <h3>High Quality</h3>
+              <p>
+                A textile is a flexible material made by creating an
+                interlocking network of yarns or threads, which are produced by
+                spinning raw fibres from either natural or synthetic sources
+                into long and twisted lengths.
+              </p>
+            </div>
+            <div className="features-item">
+              <FontAwesomeIcon icon={faCogs} />
+              <h3>Reliable service</h3>
+              <p>
+                All that you need just to trust us and we will satisfy you with
+                quality and rapidity of our work. We know all about textile
+                business, import and export, all the documents that are needed
+                everything is on us.
+              </p>
+            </div>
+            <div className="features-item">
+              <FontAwesomeIcon icon={faClock} />
+              <h3>In time production</h3>
+              <p>
+                A textile is a flexible material made by creating an
+                interlocking network of yarns or threads, which are produced by
+                spinning raw fibres from either natural or synthetic sources
+                into long and twisted lengths.
+              </p>
+            </div>
+            <div className="features-item">
+              <FontAwesomeIcon icon={faHandshake} />
+              <h3>High flexibility</h3>
+              <p>
+                As the TTC supply air diffuser has all of the sensors built in
+                to the diffuser and does not require any installation on the
+                walls, extremely high flexibility and simple management are
+                obtained when walls are to be built, moved or removed.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="services">
+          <h1>Services</h1>
+          <div className="service-container">
+            <p>
+              YOUS CASINO's affiliate program is one of the most trusted and
+              Excellent partnership model. We are committed to enhancing our
+              online casino business model by making all of our tools
+              comfortable and easy to manage We are committed to making it a
+              reality. The main functions provided by this affiliate program are
+              as follows.{" "}
+            </p>
+
+            <p>
+              <FontAwesomeIcon icon={faCheckCircle} /> Import and export of
+              textile production
+            </p>
+            <p>
+              <FontAwesomeIcon icon={faCheckCircle} /> Intermediary services
+            </p>
+            <p>
+              <FontAwesomeIcon icon={faCheckCircle} /> Consulting and etc
+            </p>
+          </div>
+          <span className="services-image"></span>
+        </section>
         <section id="contact"></section>
       </div>
     </div>
