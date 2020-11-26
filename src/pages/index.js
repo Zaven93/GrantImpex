@@ -162,7 +162,15 @@ const Index = () => {
         </section>
         <section id="contact">
           <h1>send us a message</h1>
-          <EmailForm />
+          <form
+            name="zaven-form"
+            action="post"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input name="name" placeholder="Your name" type="text" />
+            <button>Send</button>
+          </form>
         </section>
       </div>
     </div>
