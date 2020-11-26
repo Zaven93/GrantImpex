@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -18,6 +18,12 @@ const Index = () => {
   const [active, setActive] = useState(false)
   const [clicked, setClicked] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
 
   const intl = useIntl()
 
@@ -47,6 +53,61 @@ const Index = () => {
   }
 
   scrollWindow()
+
+  const formRef = useRef()
+
+  const encode = data => {
+    Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    const form = formRef.current
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...state,
+      }),
+    })
+      .then(() => alert("Success"))
+      .catch(() => alert("Error"))
+
+    setState({
+      name: "",
+      email: "",
+      message: "",
+    })
+  }
+
+  // handleSubmit = event => {
+  //   event.preventDefault()
+
+  //   const form = this.ContactForm.current
+
+  //   fetch("/", {
+  //     method: "post",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: this.encode({
+  //       "form-name": form.getAttribute("name"),
+  //       ...this.state,
+  //     }),
+  //   })
+  //     .then(() => navigate("/"))
+  //     .catch(error => alert(error))
+
+  //   this.setState({
+  //     name: "",
+  //     email: "",
+  //     message: "",
+  //   })
+  // }
+
+  console.log("Form name", formRef.current.getAttribute("name"))
+
   return (
     <div>
       <Navbar scrolled={scrolled} active={active} setActive={setActive} />
@@ -163,12 +224,14 @@ const Index = () => {
         <section id="contact">
           <h1>send us a message</h1>
           <form
-            name="zaven-form"
-            action="post"
+            ref={formRef}
+            name="test-form"
+            method="post"
             data-netlify="true"
-            data-netlify-honeypot="bot-field"
           >
             <input name="name" placeholder="Your name" type="text" />
+            <input name="email" placeholder="Email" />
+            <input name="message" placeholder="Message" type="text" />
             <button>Send</button>
           </form>
         </section>
