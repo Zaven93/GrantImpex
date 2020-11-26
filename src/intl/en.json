@@ -1,7 +1,9 @@
 {
-  "home": "home",
+  "home": "mome",
   "about": "about us",
   "features": "our features",
   "services": "services",
-  "contact": "contact us"
+  "contact": "contact us",
+  "explore": "explore",
+  "contact_us": "contact us"
 }

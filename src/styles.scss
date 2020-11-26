@@ -5,7 +5,30 @@
   font-family: sans-serif;
   box-sizing: border-box;
   transition: all 0.3s ease-in-out;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+@mixin header-mobile {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 1.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: inline;
+    width: 100px;
+    height: 2px;
+    background: #e8c300;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100%;
+  }
 }
 
 #home {
@@ -34,7 +57,7 @@
         content: "";
         position: absolute;
         display: inline;
-        width: 250px;
+        width: 90px;
         height: 2px;
         background: #e8c300;
         bottom: -10px;
@@ -64,6 +87,44 @@
         background: transparent;
         border: 1px solid #ffffff;
       }
+    }
+  }
+}
+
+#about {
+  padding: 30px 15px;
+
+  h1 {
+    @include header-mobile;
+  }
+
+  p {
+    line-height: 1.67;
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .about-image {
+    width: 80%;
+    height: 250px;
+    background-image: url("./images/textile_production.jpg");
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 10px 10px -5px;
+    display: inline-block;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      border: 10px solid #e8c300;
     }
   }
 }

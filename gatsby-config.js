@@ -9,13 +9,6 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-fontawesome-css`,
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-intl`,
       options: {
         // Directory with the strings JSON
@@ -26,6 +19,13 @@ module.exports = {
         defaultLanguage: `ru`,
         // Redirects to `/ru` in the route `/`
         redirect: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     `gatsby-transformer-sharp`,
