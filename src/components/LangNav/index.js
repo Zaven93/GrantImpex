@@ -36,9 +36,9 @@ const Dropdown = ({ active }) => {
       <div className="dd-header" onClick={() => toggle()}>
         <div className="dd-header-title">{headerTitle}</div>
         {listOpen ? (
-          <FontAwesomeIcon icon={faAngleUp} size="2x" />
+          <FontAwesomeIcon icon={faAngleUp} />
         ) : (
-          <FontAwesomeIcon icon={faAngleDown} size="2x" />
+          <FontAwesomeIcon icon={faAngleDown} />
         )}
       </div>
       {listOpen && (

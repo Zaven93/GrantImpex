@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import Navbar from "../components/Navbar"
 import LangNav from "../components/LangNav"
+import EmailForm from "../components/EmailForm"
 import textileProduction from "../images/textile_production.jpg"
 import "../styles.scss"
 
@@ -159,7 +160,10 @@ const Index = () => {
           </div>
           <span className="services-image"></span>
         </section>
-        <section id="contact"></section>
+        <section id="contact">
+          <h1>send us a message</h1>
+          <EmailForm />
+        </section>
       </div>
     </div>
   )
