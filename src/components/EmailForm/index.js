@@ -19,7 +19,7 @@ export default () => (
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact-demo", ...values }),
+        body: encode({ "form-name": "grantImpex-email", ...values }),
       })
         .then(() => {
           alert("Success")
@@ -46,7 +46,7 @@ export default () => (
     }}
   >
     {() => (
-      <Form name="contact-demo" data-netlify={true}>
+      <Form name="grantImpex-email" data-netlify={true}>
         <label htmlFor="name">Name: </label>
         <Field className="name-input" name="name" />
         <ErrorMessage name="name" />
