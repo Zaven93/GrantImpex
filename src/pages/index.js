@@ -106,8 +106,6 @@ const Index = () => {
   //   })
   // }
 
-  console.log("Form name", formRef.current.getAttribute("name"))
-
   return (
     <div>
       <Navbar scrolled={scrolled} active={active} setActive={setActive} />
